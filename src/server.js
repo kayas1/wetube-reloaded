@@ -3,17 +3,17 @@ import express from "express";
 const app = express();
 const PORT = 4000;
 
+const logger = (req,res,next)=>{
+    console.log(`${req.method} ${req.url}`);
+    next();
+};
 
 const handleHome = (req, res)=> {
-    return res.send("I still love you.");
-}
-const handleLogin =(req, res)=>{
-    return res.send("Login here");
-}
+    return res.send("I love middleware!");
+};
 
 
-app.get("/", handleHome);
-app.get("/login", handleLogin);
+app.get("/", logger, handleHome);
 const handleListening = (req, res) =>console.log(`server listening on port http://localhost:${PORT}`);
 
 app.listen(PORT, handleListening);
