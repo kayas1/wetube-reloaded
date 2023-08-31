@@ -9,9 +9,6 @@ const PORT = 4000;
 const logger = morgan("dev");
 app.use(logger);
 
-
-
-
 app.use("/", globalRouter);
 app.use("/users",userRouter);
 app.use("/videos", videoRouter);
