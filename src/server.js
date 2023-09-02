@@ -5,7 +5,7 @@ import videoRouter from "./routers/videoRouter";
 import userRouter from "./routers/userRouter";
 
 const app = express();
-const PORT = 4000;
+const PORT = 4010;
 const logger = morgan("dev");
 app.use(logger);
 
