@@ -1,4 +1,6 @@
 import User from "../models/User";
+import Video from "../models/Video";
+
 import fetch from "node-fetch";
 import bcrypt from "bcrypt";
 
@@ -33,8 +35,6 @@ export const postLogin=async (req,res)=>{
     if(!user){
         return res.status(400).render("login", {pageTitle, errorMessage:"An account with this username does not exists."});
     }
-    console.log(user.username);
-    console.log(user.password);
     const ok = await bcrypt.compare(password, user.password);
     if(!ok){
         return res.status(400).render("login", {pageTitle, errorMessage:"Wrong password."});
@@ -110,7 +110,6 @@ export const getEdit=(req,res)=>{
 
 export const postEdit=async (req,res)=>{
     const {session:{user:{_id, avatarUrl}}, body:{name,username,location}, file,}=req;
-    console.log(req.session);
     const username_check= await User.findOne({username:username});
     console.log(username_check);
     if(username_check && username_check.id!==_id){
@@ -126,7 +125,7 @@ export const getChangePassword = (req,res)=>{
     if(req.session.user.socialOnly){
         return res.redirect("/");
     }
-    return res.render("change-password", {pageTitle:"Change Password"});
+    return res.render("users/change-password", {pageTitle:"Change Password"});
 };
 
 export const postChangePassword = async (req,res)=>{
@@ -145,4 +144,12 @@ export const postChangePassword = async (req,res)=>{
     return res.redirect("/users/logout");
 };
 
-export const see=(req,res)=>res.send("See User");
+export const see=async(req,res)=>{
+    const {id}=req.params;
+    const user = await User.findById(id).populate("videos");
+    console.log(user);
+    if(!user){
+        return res.status(404).render("404", {pageTitle:"User isn't found."});
+    }
+    return res.render("users/profile", {pageTitle:user.name, user});
+};
