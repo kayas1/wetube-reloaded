@@ -7,7 +7,8 @@
     "url": "(https://github.com/kayas1/wetube-reloaded)"
   },
   "scripts": {
-    "dev": "nodemon --exec babel-node src/init.js"
+    "dev:server": "nodemon",
+    "dev:assets": "webpack"
   },
   "author": "kayas1",
   "license": "MIT",
@@ -28,7 +29,15 @@
     "@babel/node": "^7.22.10",
     "@babel/preset-env": "^7.22.10",
     "@prettier/plugin-pug": "^3.0.0",
+    "babel-loader": "^9.1.3",
+    "css-loader": "^6.8.1",
+    "mini-css-extract-plugin": "^2.7.6",
     "nodemon": "^3.0.1",
-    "prettier": "^3.0.3"
+    "prettier": "^3.0.3",
+    "sass": "^1.68.0",
+    "sass-loader": "^13.3.2",
+    "style-loader": "^3.3.3",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
   }
 }
