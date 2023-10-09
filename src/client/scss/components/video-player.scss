@@ -1,0 +1,43 @@
+#videoContainer{
+    width: 100%;
+    position: relative;
+    #videoFile{
+        width: 100%;
+    }
+    #videoControls{
+        opacity: 0;
+        &.showing{
+            opacity: 1;
+        }
+        display: flex;
+        align-items: center;
+        width: 98%;
+        height: 7%;
+        border-radius: 10px;
+        background-color: rgba(0,0,0,0.5);
+        position: absolute;
+        bottom: 10px;
+        div{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #playBar{
+            width: 80%;
+            #timeline{
+                width: 83%;
+            }
+            span{
+                margin: 0 5px;
+            }
+        }
+        #volumeBar{
+            width: 15%;
+            justify-content: space-evenly;
+        }
+        #fullScreenBtn{
+            width: 5%;
+        }
+        margin: 0 1%;
+    }
+}
