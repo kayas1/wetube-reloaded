@@ -1,4 +1,5 @@
 
+const {createFFmpeg, fetchFile} = require('@ffmpeg/ffmpeg');
 
 const startBtn = document.getElementById("startBtn");
 const video = document.getElementById("preview");
@@ -8,6 +9,8 @@ let recorder;
 let videoFile;
 
 const handleDownload = ()=>{
+
+    const ff
     const a= document.createElement("a");
     a.href=videoFile;
     a.download = "My recording.webm";
