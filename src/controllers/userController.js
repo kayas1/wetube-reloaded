@@ -118,7 +118,7 @@ export const postEdit=async (req,res)=>{
         console.log("name problems");
         return res.redirect("/users/edit");
     }
-    const updatedUser= await User.findByIdAndUpdate(_id,{avatarUrl: file ? file.path : avatarUrl,name,username,location},{new:true});
+    const updatedUser= await User.findByIdAndUpdate(_id,{avatarUrl: file ? file.location : avatarUrl,name,username,location},{new:true});
     req.session.user=updatedUser;
     return res.redirect("/users/edit");
 };
