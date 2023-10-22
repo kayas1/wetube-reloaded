@@ -59,7 +59,7 @@ export const startGithubLogin=(req,res)=>{
 export const finishGithubLogin = async(req,res)=>{
     const baseUrl="https://github.com/login/oauth/access_token";
     const config={
-        client_id:process.env.GH_Client,
+        client_id:process.env.GH_CLIENT,
         client_secret:process.env.GH_SECRET,
         code:req.query.code,
     };
